@@ -31,13 +31,20 @@
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src="js/hello.js"></script>
             </p>
         </div>
 
         <div class="practice">
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
+            <script>
+                var a = "great";    //BE AWARE OF TYPE
+                a = 5;
+                var b = 10;
+                var c = b + a;
+                document.write("c = " + c);
+            </script>
 
 
         </div>
@@ -45,7 +52,10 @@
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
-
+            <script>
+                for(var i=0; i<7; i++){
+                    document.write("<img src=\"img/die1.png\">");}
+            </script>
 
             <p> Write a table to the page </p>
 
@@ -55,7 +65,10 @@
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                window.alert("hihihi");
+                document.write(document.URL);
+                document.write(document.lastModified);
+                window.open("http://www.usca.edu");
             </script>
 
 
@@ -65,7 +78,17 @@
             <h1> Get textcontent of an element </h1>
             <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
             <p>Result:
-                <script src="js/arith.js"></script>
+                <script>
+                    //access the element
+                    var sE = document.getElementById("num1");
+                    var n = parseInt(sE.textContent);
+                    document.write(n);
+                    var n2 = parseInt(document.getElementById("num2").textContent);
+                    document.write(n2);
+                    var sum = n + n2;
+                    document.write(n + " + " + n2 + " = " + sum);
+
+                </script>
             </p>
 
         </div>

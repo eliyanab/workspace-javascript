@@ -65,7 +65,7 @@
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-                window.alert("hihihi");
+                //window.alert("hihihi");
                 document.write(document.URL);
                 document.write(document.lastModified);
                 window.open("http://www.usca.edu");
@@ -94,13 +94,21 @@
         </div>
 
         <div class="practice">
-            <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
-            <p id="p3"> Paragraph Number three </p>
+            <h1> Get innerHTML of an element</h1>
+            <p id="p1" onclick="changeP();"> Paragraph Number One </p>
+            <p id="p2" onclick="changeP2();"> Paragraph Number two </p>
+            <p id="p3" onclick="changeP3();"> Paragraph Number three </p>
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
+            <script>
+                function changeP(){
+                document.getElementById('p1').innerHTML="<i>italic</i>";}
+                function changeP2(){
+                document.getElementById('p2').textContent="<b>bold</b>";}
+                function changeP3(){
+                    document.getElementById('p3').innerHTML="<i>Clicked!</i>";}
 
+            </script>
 
         </div>
 
@@ -109,7 +117,13 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
+                    //input
+                    var iE1 = document.getElementsByName('num1')[0];
+                    var iE2 = document.getElementsByName('num2')[0];
+                    //process
+                    var ans = parseFloat(iE1.value)+parseFloat(iE2.value);
+                    //display
+                    document.getElementById('result').textContent=ans.toString();
 
                 }
             </script>
@@ -138,7 +152,28 @@
                         <input type="text" id="cEmail">
                     </label>
                 </p>
+                <p id="emailMessage">
+
+                </p>
             </form>
+            <script>
+                //event handler
+                function welcome(){
+                    console.log("event fired!!");
+                    var name = document.getElementById('cName').value;
+                    //output
+                    document.getElementById('message').textContent="Welcome "+name+"!";
+                }
+                //register event with the handler
+                function email(){
+                    var email = document.getElementById('cEmail').value;
+                    document.getElementById('emailMessage').textContent="Wow, "+email+" is a sick email!";
+                }
+                var nE = document.getElementById('cName');
+                nE.addEventListener('blur', welcome, false);
+                var eE = document.getElementById('cEmail');
+                eE.addEventListener('blur', email, false);
+            </script>
 
         </div>
 
@@ -146,7 +181,16 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="result2"> ? </label>
+            <script>
+                var numE = document.getElementById('num');
+                numE.addEventListener('blur', square, false);
+                function square(){
+                    var number = document.getElementById('num').value;
+                    var ans = number * number;
+                    document.getElementById('result2').textContent=ans;
+                }
+            </script>
 
         </div>
 
@@ -160,9 +204,21 @@
 
             <input type="button" id="tryit" value="Click and Display">​
 
-            <div id="message">​
+            <div id="codeMessage">​
             </div>
+            <script>
+                //event handler
+                function tryiteditor(){
+                    console.log("i'm in try it editor");
+                    //get
+                    var inputcode = document.getElementById('code').value;
+                    //display
+                    document.getElementById('codeMessage').innerHTML=inputcode;
 
+                }
+                //register event with the handler
+                document.getElementById('tryit').addEventListener('click', tryiteditor);
+            </script>
 
         </div>
 

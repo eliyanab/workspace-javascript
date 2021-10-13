@@ -27,7 +27,6 @@
 
                     // use console.log to display a message   -- on console
                     console.log("debugging window")
-                    
                 </script>
             </p>
             <p> Please import external file hello.js here. 
@@ -241,8 +240,29 @@
             </p>
 
             <script type="text/javascript">
-
-
+                //event handler : change -> get price
+                function getprice(){
+                    var yearCar = document.getElementById('year').value;
+                    var conditionCar = document.getElementById('condition').value;
+                    var price=0;
+                    if(yearCar=="2003" && conditionCar=="Fair"){
+                        price=2000;
+                    }
+                    else if(yearCar=="2004" && conditionCar=="Fair"){
+                        price=4000;
+                    }
+                    else if(yearCar=="2003" && conditionCar=="Good"){
+                        price=3000;
+                    }
+                    else{
+                        price=4500;
+                    }
+                    //output
+                    document.getElementById('price').textContent=price.toString();
+                }
+                //register event
+                document.getElementById('year').addEventListener('change', getprice, false);
+                document.getElementById('condition').addEventListener('change', getprice, false);
 
             </script>
 
@@ -253,7 +273,35 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
-
+            <script>
+                //event handler blur -> change color
+                function changeColor(){
+                    var theme = document.getElementById('theme').value;
+                    var bcolor = "white";
+                    switch(theme){
+                        case "warm": 
+                            bcolor = "green"; 
+                            break;
+                        case "hot": 
+                            bcolor = "red"; 
+                            break;
+                        case "cool": 
+                            bcolor = "blue"; 
+                            break;
+                        case "dark":
+                            bcolor = "black";
+                            break;
+                        case "bright":
+                            bcolor ="yellow";
+                            break;
+                        default:
+                            bcolor = "white";
+                    }
+                    document.body.setAttribute("style","background-color:"+bcolor);
+                }
+                //register event
+                document.getElementById('theme').addEventListener('blur', changeColor, false);
+            </script>
         </div>
 
 
@@ -277,11 +325,45 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" id="pbutton" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="result3">
 
             </p>
+            <script>
+                document.getElementById('pbutton').addEventListener('click', getPremium, false);
+                function getPremium(){
+                    //get radio values
+                    var e1 = document.querySelector('input[name="coverage"]:checked');
+                    var coverage = parseInt(e1.value);
+                    console.log(coverage);
+                    //get the value from selection box
+                    var age = document.getElementById('agegroup').value;
+                    console.log(age);
+                    //process
+                    var agefactor = 0;
+                    switch(age){
+                        case "under 30":
+                            agefactor = 0.08;
+                            break;
+                        case "30-34":
+                            agefactor = 0.09;
+                            break;
+                        case "35-39":
+                            agefactor = 0.11;
+                            break;
+                        case "40-44":
+                            agefactor = 0.17;
+                            break;
+                        default:
+                            agefactor = 0;
+                    }
+                    var base = 10;
+                    var premium = base + agefactor*coverage;
+                    console.log(premium);
+                    document.getElementById('result3').textContent="Premium = $"+premium.toString();
+                }
+            </script>
 
         </div>
 

@@ -270,7 +270,7 @@
 
         <div class="practice">
             <h1> Decision Statement - Switch</h1>
-            <p> Choose your favorite theme(warm, cool, hot)
+            <p> Choose your favorite theme(warm, cool, hot, dark, bright)
                 <input type="text" id="theme">
             </p>
             <script>
@@ -320,6 +320,10 @@
                     <option> 30-34 </option>
                     <option> 35-39</option>
                     <option> 40-44 </option>
+                    <option> 45-49 </option>
+                    <option> 50-54 </option>
+                    <option> 55-59 </option>
+                    <option> 60-64 </option>
 
                 </select>
 
@@ -338,30 +342,43 @@
                     var coverage = parseInt(e1.value);
                     console.log(coverage);
                     //get the value from selection box
-                    var age = document.getElementById('agegroup').value;
+                    var age = document.getElementById('agegroup').selectedIndex;
                     console.log(age);
                     //process
                     var agefactor = 0;
                     switch(age){
-                        case "under 30":
+                        case 0:
                             agefactor = 0.08;
                             break;
-                        case "30-34":
+                        case 1:
                             agefactor = 0.09;
                             break;
-                        case "35-39":
+                        case 2:
                             agefactor = 0.11;
                             break;
-                        case "40-44":
+                        case 3:
                             agefactor = 0.17;
+                            break;
+                        case 4:
+                            agefactor = 0.29;
+                            break;
+                        case 5:
+                            agefactor = 0.48;
+                            break;
+                        case 6:
+                            agefactor = 0.75;
+                            break;
+                        case 7:
+                            agefactor = 1.17;
                             break;
                         default:
                             agefactor = 0;
                     }
                     var base = 10;
-                    var premium = base + agefactor*coverage;
+                    coverage = coverage/1000;
+                    var premium = base + agefactor * coverage;
                     console.log(premium);
-                    document.getElementById('result3').textContent="Premium = $"+premium.toString();
+                    document.getElementById('result3').textContent="Premium = $"+premium.toFixed(2);
                 }
             </script>
 
@@ -375,8 +392,26 @@
             <p> Display the square of numer 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input type="button" id="csquare" value="Click for Square">
             </p>
+            <p id="result4">
+
+            </p>
+            <script>
+                //bind event
+                document.querySelector('#csquare').addEventListener('click', doSquare, false);
+                var result = "";
+                //event handler
+                function doSquare(){
+                    var N = parseInt(document.getElementById('inputnumber1').value);
+                    for(var i=1; i<=N; i++){
+                        var iSquare = i*i;
+                        result += ("<h2> " + iSquare + "</h2>");
+                    }
+                    document.getElementById('result4').innerHTML = result;
+                }
+
+            </script>
 
         </div>
 
@@ -386,12 +421,32 @@
             <!--  Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" id="cmult" value="Click for multiplication table">
             </p>
-
+            
             <!-- output section -->
+            <script>
+                document.querySelector('#cmult').addEventListener('click', doMult);
+                var result2 = "";
+                function doMult(){
+                    var N2 = parseInt(document.getElementById('inputnumber2').value);
+                    result2 += "<table>";
+                    for(var i=1; i<=9; i++){
+                        result2 += "<tr>";
+                        for(var j=1; j<=9; j++){
+                            var mult = i*j;
+                            result2+="<td>"+mult+"</td>";
+                        }
+                        result2+="</tr>";
+                    }
+                    result2+="</table>";
+                    document.getElementById('result5').innerHTML=result2;
+                }
+            </script>
             <div id="output">
+                <p id="result5">
 
+                </p>
 
             </div>
 

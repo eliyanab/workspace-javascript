@@ -431,11 +431,11 @@
                 function doMult(){
                     var N2 = parseInt(document.getElementById('inputnumber2').value);
                     result2 += "<table>";
-                    for(var i=1; i<=9; i++){
+                    for(var i=1; i<=N2; i++){
                         result2 += "<tr>";
-                        for(var j=1; j<=9; j++){
+                        for(var j=1; j<=N2; j++){
                             var mult = i*j;
-                            result2+="<td>"+mult+"</td>";
+                            result2+="<td>"+i+"x"+j+"="+mult+"</td>";
                         }
                         result2+="</tr>";
                     }
@@ -474,7 +474,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id="diceImage"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -495,6 +495,21 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+            <script>
+                //event
+                document.querySelector("#roll").addEventListener('click', roll, false);
+                //event handler
+                var stats = [0,0,0,0,0,0];
+                function roll(){
+                    console.log("rolling the dice");
+                    var e1 = document.getElementById("diceImage");
+                    var rand = Math.floor(Math.random()*6+1);
+                    e1.setAttribute("src", "img/die"+rand+".png");
+                    stats[rand-1]++;
+                    //display the stats
+                    document.getElementById("r"+rand).textContent=stats[rand-1];
+                }
+            </script>
 
         </div>
 

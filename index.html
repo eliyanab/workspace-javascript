@@ -8,6 +8,14 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+<script>
+    $(document).ready(function(){
+        $('body').hide().fadeIn(3000);
+        $('img').hide();
+        $('input').hide();
+    });
+</script>
+
 
 </head>
 
@@ -531,7 +539,18 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
-
+            <script>
+                var index = 0; //index of the image
+                var imglist = document.querySelectorAll('.img-container-hide'); //static list
+                //start animation
+                setInterval(changepic, 2500);
+                function changepic(){
+                    imglist[index].setAttribute('class', 'img-container-hide');
+                    index++;
+                    index = index % 5;
+                    imglist[index].setAttribute('class', 'img-container');
+                }
+            </script>
         </div>
 
 

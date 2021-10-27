@@ -10,9 +10,16 @@
 
 <script>
     $(document).ready(function(){
-        $('body').hide().fadeIn(3000);
+        $('body').hide().fadeIn(3000, function(){alert("done!")});
         $('img').hide();
         $('input').hide();
+        $('h1').keyup(function(e){
+            //$(this).slideUp();
+            console.log(e.keyCode);
+            $(this).text("hide the section");
+            $(this).parent().children('p').slideToggle();
+        });
+        //var content = $('h1').text();
     });
 </script>
 

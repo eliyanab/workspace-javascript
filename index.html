@@ -11,8 +11,8 @@
 <script>
     $(document).ready(function(){
         $('body').hide().fadeIn(3000, function(){alert("done!")});
-        $('img').hide();
-        $('input').hide();
+        //$('img').hide();
+        //$('input').hide();
         $('h1').keyup(function(e){
             //$(this).slideUp();
             console.log(e.keyCode);
@@ -550,13 +550,13 @@
                 var index = 0; //index of the image
                 var imglist = document.querySelectorAll('.img-container-hide'); //static list
                 //start animation
-                setInterval(changepic, 2500);
+                /*setInterval(changepic, 2500);
                 function changepic(){
                     imglist[index].setAttribute('class', 'img-container-hide');
                     index++;
                     index = index % 5;
                     imglist[index].setAttribute('class', 'img-container');
-                }
+                }*/
             </script>
         </div>
 
